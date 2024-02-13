@@ -18,9 +18,12 @@ public class SaisieFormulaire {
         System.out.println("saisie = " + saisie);
         saisie = scan.next();
         System.out.println("Et :" + saisie);
-        getInt(5,7);
+        Age(getInt(5,7));
     }
-    
+     public static void Age(int a){
+        System.out.printf("Vous avez %d ans%n", a);
+    }
+     
     /**
      * Demande à l'utilisateur de faire la saisie d'un entier entre min et max
      * Redemande tant que la saisie n'est pas valide
@@ -31,16 +34,18 @@ public class SaisieFormulaire {
      */
     private static int getInt(int min, int max){
        java.util.Scanner scan = new java.util.Scanner(System.in);
-       int value;
-       boolean isCorrect = false;
-        do{
+       String saisie;
+       int value =0;
+       boolean isCorrect;
+       do{
             System.out.println("Saisissez un nombre entre :" +min+" et " +max);
             //Saisie de la valeur
             try{
-                value = scan.nextInt();
+                saisie = scan.nextLine();
+                value = Integer.parseInt(saisie);
                 //validation valeur
-                isCorrect = (value >= min && value <= max);
-            }catch (Exception e){
+                isCorrect = (value >= min) && (value <= max);
+            }catch (NumberFormatException e){
                 System.out.println("Valeur incorrecte. Recommencez");
                 isCorrect = false;
             }
