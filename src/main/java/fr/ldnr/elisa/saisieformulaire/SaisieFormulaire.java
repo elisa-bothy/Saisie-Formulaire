@@ -31,14 +31,18 @@ public class SaisieFormulaire {
      */
     private static int getInt(int min, int max){
        java.util.Scanner scan = new java.util.Scanner(System.in);
-       int value = 0;
+       int value;
        boolean isCorrect = false;
         do{
             System.out.println("Saisissez un nombre entre :" +min+" et " +max);
-            value = scan.nextInt();
-            isCorrect = (value >= min && value <= max);
-            if (isCorrect){
-                System.out.println("saisie = " + value);
+            //Saisie de la valeur
+            try{
+                value = scan.nextInt();
+                //validation valeur
+                isCorrect = (value >= min && value <= max);
+            }catch (Exception e){
+                System.out.println("Valeur incorrecte. Recommencez");
+                isCorrect = false;
             }
         }while(!isCorrect);
         return value;
